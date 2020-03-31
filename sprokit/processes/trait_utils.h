@@ -116,6 +116,22 @@ kwiver::vital::config_block_description_t const  NAME ## _config_trait::descript
  */
 #define create_config_trait(KEY, TYPE, DEF, DESCR) create_named_config_trait( KEY, # KEY, TYPE, DEF, DESCR )
 
+/**
+ * \brief
+ *
+ * Specialized macro to create a uniform description of the config
+ * block that specifies an algorithm name. Being defined on one place
+ * all processes can have the documentation upgraded right here.
+ */
+#define create_algorithm_name_config_trait( NAME )                      \
+create_config_trait( NAME, std::string , "",                            \
+                     "Algorithm configuration subblock to select and configure desired implementation.\n\n" \
+                     "Configuration example:\n"                         \
+                     "block " #NAME "\n"                                \
+                     "    type = impl # desired implementation\n"       \
+                     "    impl:param = value # implementation specific config item\n" \
+                     "    # etc\n"                                      \
+                     "endblock" );
 
 #define declare_config_using_trait(KEY)                         \
 declare_configuration_key( KEY ## _config_trait::key,           \
