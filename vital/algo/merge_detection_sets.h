@@ -41,7 +41,7 @@ namespace kwiver {
 namespace vital {
 namespace algo {
 
-/// An abstract base class for converting base image type
+/// An abstract base class for merging sets of object detections
 class VITAL_ALGO_EXPORT merge_detection_sets
   : public kwiver::vital::algorithm_def<merge_detection_sets>
 {
@@ -49,7 +49,7 @@ public:
   /// Return the name of this algorithm
   static std::string static_type_name() { return "merge_detection_sets"; }
 
-  /// Merge images
+  /// Merge sets
   virtual kwiver::vital::detected_object_set_sptr
     merge(kwiver::vital::detected_object_set_sptr set1,
           kwiver::vital::detected_object_set_sptr set2) const = 0;
